@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Evaluation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 150px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        select, textarea {
+            width: 100%;
+            min-width: 150px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin: 6px 0;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #222;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Evaluation</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Grading (1-5)</th>
+                <th>Student Feedback</th>
+                <th>Interviewer Feedback</th>
+            </tr>
+            <tr>
+                <td>Introduction and Professionalism</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback1"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback1"></textarea></td>
+            </tr>
+            <tr>
+                <td>Communication Skills</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback2"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback2"></textarea></td>
+            </tr>
+            <tr>
+                <td>Asking Relevant Questions</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback3"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback3"></textarea></td>
+            </tr>
+            <tr>
+                <td>Verifying Documents (e.g., Passport)</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback4"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback4"></textarea></td>
+            </tr>
+            <tr>
+                <td>Inquiring about Visa Refusal</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback5"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback5"></textarea></td>
+            </tr>
+            <tr>
+                <td>Asking about Agent and Application Details</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback6"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback6"></textarea></td>
+            </tr>
+            <tr>
+                <td>Academic Development</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback7"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback7"></textarea></td>
+            </tr>
+            <tr>
+                <td>Depth of Explanation</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback8"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback8"></textarea></td>
+            </tr>
+            <tr>
+                <td>Exploring Course, Country & University Selection</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback9"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback9"></textarea></td>
+            </tr>
+            <tr>
+                <td>Inquiring about Work Experience</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback10"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback10"></textarea></td>
+            </tr>
+            <tr>
+                <td>Obtaining Family and Financial Information</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback11"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback11"></textarea></td>
+            </tr>
+            <tr>
+                <td>Evaluating Future Plans</td>
+                <td>
+                    <select class="paramGrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </td>
+                <td><textarea class="feedback" id="studentFeedback12"></textarea></td>
+                <td><textarea class="feedback" id="interviewerFeedback12"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right; font-weight: bold;">Overall Impression and Engagement:</td>
+                <td><span id="totalMarks">0</span></td>
+                <td><span id="overallResult">N/A</span></td>
+            </tr>
+        </table>
+
+        <button id="calculateButton">Calculate Result</button>
+        <button id="downloadButton">Download Table</button>
+        <button id="refreshButton">Refresh</button>
+        <div class="result">Overall Result: <span id="overallResultText">N/A</span></div>
+    </div>
+
+   <script>
+    let calculationEnabled = true; // Added a flag to control calculation
+
+    document.getElementById("calculateButton").addEventListener("click", calculateResult);
+
+    function calculateResult() {
+        if (!calculationEnabled) {
+            return; // If calculation is disabled, exit the function
+        }
+
+        let totalScore = 0;
+        const paramGrades = document.querySelectorAll(".paramGrade");
+
+        paramGrades.forEach(paramGrade => {
+            totalScore += parseInt(paramGrade.value);
+        });
+
+        let result = "N/A"; // Default value
+        if (totalScore >= 40) {
+            result = "Pass";
+        } else if (totalScore >= 30 && totalScore <= 35) {
+            result = "Re interview";
+        } else {
+            result = "Fail";
+        }
+
+        document.getElementById("totalMarks").textContent = totalScore;
+        document.getElementById("overallResult").textContent = result;
+        document.getElementById("overallResultText").textContent = result;
+    }
+
+    document.getElementById("downloadButton").addEventListener("click", downloadPage);
+
+    function downloadPage() {
+        // Disable text areas and dropdowns before generating the HTML for download
+        const feedbackElements = document.querySelectorAll(".feedback");
+        const paramGrades = document.querySelectorAll(".paramGrade");
+
+        feedbackElements.forEach(feedbackElement => {
+            feedbackElement.disabled = true;
+        });
+
+        paramGrades.forEach(paramGrade => {
+            paramGrade.disabled = true;
+        });
+
+        // Disable the "Calculate Result" and "Download Table" buttons
+        document.getElementById("calculateButton").disabled = true;
+        document.getElementById("downloadButton").disabled = true;
+
+        // Create a clone of the current document
+        const clonedDocument = document.cloneNode(true);
+
+        // Collect data from text areas and replace the placeholders in the cloned document
+        const feedbackElementsInClonedDoc = clonedDocument.querySelectorAll(".feedback");
+        feedbackElementsInClonedDoc.forEach(feedbackElement => {
+            const feedbackId = feedbackElement.id;
+            const placeholder = feedbackElement.getAttribute("placeholder");
+            const userText = document.getElementById(feedbackId).value;
+            if (userText) {
+                clonedDocument.querySelector(`#${feedbackId}`).textContent = userText;
+            } else {
+                clonedDocument.querySelector(`#${feedbackId}`).textContent = placeholder;
+            }
+        });
+
+        // Create a new Blob object containing the entire HTML content of the cloned document
+        const pageHtml = clonedDocument.documentElement.outerHTML;
+        const blob = new Blob([pageHtml], { type: 'text/html' });
+
+        // Create a download link for the Blob
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'student_evaluation_page.html'; // Specify the filename you want to use
+
+        // Trigger a click event to download the file
+        a.click();
+
+        // Enable the "Calculate Result" and "Download Table" buttons after downloading
+        document.getElementById("calculateButton").disabled = false;
+        document.getElementById("downloadButton").disabled = false;
+    }
+
+    // Add event listener for the "Refresh" button
+    document.getElementById("refreshButton").addEventListener("click", refreshForm);
+
+    function refreshForm() {
+        // Enable text areas and dropdowns
+        const feedbackElements = document.querySelectorAll(".feedback");
+        const paramGrades = document.querySelectorAll(".paramGrade");
+
+        feedbackElements.forEach(feedbackElement => {
+            feedbackElement.disabled = false;
+        });
+
+        paramGrades.forEach(paramGrade => {
+            paramGrade.disabled = false;
+        });
+
+        // Clear text area values
+        feedbackElements.forEach(feedbackElement => {
+            feedbackElement.value = "";
+        });
+
+        // Reset the "Calculate Result" and "Download Table" buttons
+        document.getElementById("calculateButton").disabled = false;
+        document.getElementById("downloadButton").disabled = false;
+
+        // Reset the result and total marks
+        document.getElementById("totalMarks").textContent = "0";
+        document.getElementById("overallResult").textContent = "N/A";
+        document.getElementById("overallResultText").textContent = "N/A";
+
+        // Reset the calculation flag
+        calculationEnabled = true;
+    }
+</script>
+</body>
+</html>
